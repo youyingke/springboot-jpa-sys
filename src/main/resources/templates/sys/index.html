@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="Content-language" content="zh-CN"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="applicable-device" content="pc">
+
+<script type="text/javascript" src="/static/1.9.1/jquery.js"></script>
+<script type="text/javascript" src="/static/js/index.js"></script>
+<script type="text/javascript" src="/static/jquery-ui-1.12.1/jquery-ui.js"></script>
+<link href="/static/css/button.css" rel='stylesheet' type='text/css'/>
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta http-equiv="cache-control" content="no-cache">
+
+    <meta http-equiv="expires" content="0">
+
+    <title></title>
+
+</head>
+
+<body>
+<div>
+ <label>姓名</label>   <input type="text" id="username_search">
+    <label>地址</label>   <input type="text" id="address_search">
+    <label>电话</label>   <input type="text" id="mobile_search">
+
+    <button id="chaxun" onclick="query()" value="查询" class="btn">
+
+    </button><input type="button" value="查询" id="search">
+    <input type="button" value="删除" id="delete_buildInfor">
+    <input type="button" value="添加" id="add_buildInfor">
+</div>
+<table id="tbMain">
+    <tr>
+        <!--<td></td>-->
+        <!--<td>用户ID</td>-->
+        <!--<td>姓名</td>-->
+        <!--<td>地址</td>-->
+        <!--<td>email</td>-->
+        <!--<td>手机</td>-->
+        <!--<td>操作</td>-->
+
+
+
+    </tr>
+</table>
+
+
+</table>
+<dialog id="add_house"></dialog>
+<dialog id="light1"></dialog>
+<!--<div id="light1"></div>-->
+
+</body>
+
+
+
+</html>
