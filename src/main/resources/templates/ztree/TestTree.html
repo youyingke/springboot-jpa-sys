@@ -1,0 +1,111 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>test示例</title>
+    <link rel="stylesheet" th:href="@{/ztree/css/zTreeStyle/zTreeStyle.css}"/>
+    <link rel="stylesheet" th:href="@{/ztree/css/demo.css}"/>
+
+    <!--<script type="text/javascript" src="/static/js/jquery-1.4.4.min.js"></script>-->
+    <!--<script type="text/javascript" src="/static/js/jquery.ztree.core.js"></script>-->
+
+    <script type="text/javascript" th:src="@{/ztree/js/jquery-1.4.4.min.js}"></script>
+    <!--<script type="text/javascript" th:src="@{/js/jquery.ztree.core.js}"></script>-->
+    <script type="text/javascript" th:src="@{/ztree/js/jquery.ztree.all.js}"></script>
+
+
+    <script type="text/javascript">
+        var setting = {
+            data:{
+                simpleData:{
+                    enable:true
+                }
+            },
+            async: {
+                enable: true,
+                url: "list",
+                autoParam: ["id"]
+            },
+            callback: {
+                onRemove: zTreeOnRemove,
+                beforeRemove: zTreeBeforeRemove,
+                onRename: zTreeOnRename,
+                onClick: zTreeOnClick//点击节点事件
+            },
+            edit: {
+                enable: true,
+                removeTitle: '删除',
+                renameTitle: '修改'
+            },
+            view: {
+                addHoverDom: addHoverDom,
+                removeHoverDom: removeHoverDom,
+                selectedMulti: false
+            },
+
+        };
+
+        function zTreeOnClick(event, treeId, treeNode) {
+
+           // alert(treeNode.tId + ", " + treeNode.name);
+            $('#myForm').load('edit',{id:treeNode.id});
+        }
+
+        function zTreeOnRemove(event, treeId, treeNode) {
+            $.post('delete',{id:treeNode.id},function(data){});
+        }
+
+        function zTreeOnRename(event, treeId, treeNode, isCancel) {
+            $.post('rename',{id:treeNode.id,name:treeNode.name,pId:treeNode.pId},function(data){});
+        }
+
+        function zTreeBeforeRemove(treeId, treeNode) {
+            return confirm("你确定要删除'"+treeNode.name+"'节点吗？");
+        }
+
+        var newCount = 1;
+        function addHoverDom(treeId, treeNode) {
+            var sObj = $("#" + treeNode.tId + "_span");
+            if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
+//            var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+//                    + "' title='新增' onfocus='this.blur();'></span>";
+             var addStr='<span class="button add" id="addBtn_'+treeNode.tId+'" title="" onfocus="this.blur();"></span>';
+            sObj.after(addStr);
+            var btn = $("#addBtn_"+treeNode.tId);
+            if (btn) btn.bind("click", function(){
+                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                $.post("add",{pId:treeNode.id},function(data){
+                    zTree.addNodes(treeNode, data);
+                });
+                return false;
+            });
+        }
+
+        function removeHoverDom(treeId, treeNode) {
+            $("#addBtn_"+treeNode.tId).unbind().remove();
+        };
+
+
+        $(function(){
+           // alert("tesst");
+            $.fn.zTree.init($("#treeDemo"), setting);
+        });
+
+    </script>
+    <style type="text/css">
+        .ztree li span.button.add {margin-left:2px; margin-right: -1px; background-position:-144px 0; vertical-align:top; *vertical-align:middle}
+    </style>
+
+</head>
+<body>
+<div class="zTreeDemoBackground" style="float: left;">
+    <ul id="treeDemo" class="ztree"></ul>
+</div>
+<div id="myForm" style="float: left;width:500px;height: 300px;padding-top: 20px;">
+</div>
+<div align="center">
+<iframe th:src="@{/ztree/index}" height="300" width="400">
+
+</iframe>
+</div>
+</body>
+</html>
