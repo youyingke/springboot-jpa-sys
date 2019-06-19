@@ -88,6 +88,31 @@
 			<artifactId>pdfbox</artifactId>
 			<version>1.8.13</version>
 		</dependency>
+         <!--java连接opc包-->
+		<dependency>
+			<groupId>org.jinterop</groupId>
+			<artifactId>j-interop</artifactId>
+			<version>2.0.4</version><!-- j-Interop (Java - DCOM Access Bridge) 是实现DCOM wire protocol (MSRPC)的一个开源类包。可用于开发双向，Non-Native，能够与任何COM组件交互的纯Java应用程序。该项目全部采用纯Java实现并 且没有使用JNI(Java Native Interface)来提供对COM的访问 -->
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.xml/jaxrpc -->
+		<dependency>
+			<groupId>javax.xml</groupId>
+			<artifactId>jaxrpc</artifactId>
+			<version>1.1</version>  <!--远程调用-->
+		</dependency>
+		<dependency>
+			<groupId>org.openscada.utgard</groupId>
+			<artifactId>org.openscada.opc.dcom</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openscada.utgard</groupId>
+			<artifactId>org.openscada.opc.lib</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+		<!--java连接opc包-->
+
+
 
 	</dependencies>
 
