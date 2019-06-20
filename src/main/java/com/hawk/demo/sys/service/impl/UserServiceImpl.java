@@ -145,7 +145,8 @@ public class UserServiceImpl implements UserService {
     public UserDO findById(Long id) {
        List<Long> roleIds= userRoleDao.listRoleIdByUserId(id);
         UserDO user=userDao.getOne(id);
-        user.setRoleIds(roleIds);
+        if(roleIds.size()!=0)
+        {user.setRoleIds(roleIds);}
 
         return user;
     }
