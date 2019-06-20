@@ -14,5 +14,10 @@ public class UrlController {
     {
         return "/sys/index";
     }
+    @RequestMapping("/file/index")
+    public String getFileUploadUrl()
+    {
+        return "/file/index";
+    }
 
 }

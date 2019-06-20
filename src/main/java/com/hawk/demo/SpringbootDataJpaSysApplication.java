@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * 如果需要执行定时任务需要加@EnableScheduling注解
  */
 @SpringBootApplication
-@EnableScheduling
+//@EnableScheduling
 public class SpringbootDataJpaSysApplication {
 
 	public static void main(String[] args) {
