@@ -125,6 +125,28 @@
 			<version>0.4.8</version>
 		</dependency>
 
+		<!-- easypoi jar -->
+		<dependency>
+			<groupId>cn.afterturn</groupId>
+			<artifactId>easypoi-base</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.afterturn</groupId>
+			<artifactId>easypoi-web</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.afterturn</groupId>
+			<artifactId>easypoi-annotation</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+<!--    //从MultipartHttpServletRequest获取文件流需要导入-->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

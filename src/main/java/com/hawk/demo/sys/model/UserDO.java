@@ -1,5 +1,6 @@
 package com.hawk.demo.sys.model;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -20,10 +21,13 @@ public class UserDO implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "user_id")
+    @Excel(name = "用户ID",orderNum = "0")
     private Long userId;
     // 用户名
+    @Excel(name="用户名",orderNum = "1")
     private String username;
     // 用户真实姓名
+    @Excel(name="真实姓名",orderNum = "2")
     private String name;
     // 密码
     private String password;
@@ -33,6 +37,7 @@ public class UserDO implements Serializable {
     @Transient
     private String deptName;
     // 邮箱
+    @Excel(name="电子邮箱",orderNum = "3")
     private String email;
     // 手机号
     private String mobile;
