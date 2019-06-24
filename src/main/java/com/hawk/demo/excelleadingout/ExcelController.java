@@ -33,10 +33,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 @RestController
 @RequestMapping("/excel")
 public class ExcelController {
+
+    protected static final Logger LOGGER = LoggerFactory.getLogger(ExcelController.class);
 
     @Autowired
     private UserService userService;
@@ -220,9 +223,12 @@ public class ExcelController {
 
                 List<UserDO> userList = ExcelImport.importExcel(file,1,1,UserDO.class);
 
+                LOGGER.debug("导入数据一共【"+userList.size()+"】行");
+
                 System.out.println("导入数据一共【"+userList.size()+"】行");
                 for(UserDO user:userList)
                 {
+                    LOGGER.debug("userid:"+user.getUserId()+"/username"+user.getUsername()+"/name"+user.getName()+"/email"+user.getEmail());
                     System.out.println("userid:"+user.getUserId()+"/username"+user.getUsername()+"/name"+user.getName()+"/email"+user.getEmail());
                     //TODO 保存数据库
 
