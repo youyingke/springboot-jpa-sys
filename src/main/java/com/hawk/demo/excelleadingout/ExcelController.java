@@ -9,6 +9,7 @@ package com.hawk.demo.excelleadingout;
 import com.hawk.demo.excelleadingout.until.ExcelImport;
 import com.hawk.demo.sys.model.UserDO;
 import com.hawk.demo.sys.service.UserService;
+import com.hawk.demo.util.BeansUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -224,9 +225,12 @@ public class ExcelController {
                 {
                     System.out.println("userid:"+user.getUserId()+"/username"+user.getUsername()+"/name"+user.getName()+"/email"+user.getEmail());
                     //TODO 保存数据库
+
+                    UserDO userDO=userService.findById(user.getUserId());
+                    BeansUtil.copyPropertiesIgnoreNull(user,userDO);
                     try{
                         //会造成数据库没有导入的字段置空
-                        userService.save(user);
+                        userService.save(userDO);
                     }catch (Exception e){
                               System.out.println("insert database error");
                         e.getStackTrace();
