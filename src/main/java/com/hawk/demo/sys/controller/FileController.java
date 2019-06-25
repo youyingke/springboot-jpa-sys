@@ -1,7 +1,9 @@
 package com.hawk.demo.sys.controller;
 
 import com.hawk.demo.util.FileUtil;
+import com.hawk.demo.util.MailUtil;
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,6 +27,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/file")
 public class FileController {
+    @Autowired
+    private MailUtil mailUtil;
 
     @PostMapping("/uploadFile")
   //  @ResponseBody
@@ -55,6 +59,10 @@ public class FileController {
             //
             multipartFile.transferTo(uploadFile);
 
+            mailUtil.sendSimpleEmail("youyingke@qq.com","测试发送邮件","测试发送邮件内容");
+           mailUtil.sendHtmlMail("youyingke@qq.com","测试发送邮件","测试发送HTML邮件内容");
+           mailUtil.sendAttachmentsMail("youyingke@qq.com","测试发送邮件","测试发送附件邮件内容",filePath+"/"+saveFileName);
+            mailUtil.sendInlineResourceMail("youyingke@qq.com","测试发送邮件","测试发送静态文件邮件内容",filePath+"/"+saveFileName,"ceshi");
             //从新定向url写法
             return "redirect:/file/filedownlist";
         } catch (IOException e) {
