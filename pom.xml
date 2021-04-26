@@ -135,7 +135,7 @@
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.6</version>
+			<version>2.7</version>
 		</dependency>
 		<!--Thumbnailator 是一个用来生成图像缩略图、裁切、旋转、添加水印等操作的 Java 类库，
 		通过很简单的代码即可生成图片缩略图，也可直接对一整个目录的图片生成缩略图-->
