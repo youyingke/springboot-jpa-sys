@@ -100,7 +100,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.54</version>
+			<version>1.2.83</version>
 		</dependency>
 		<!--读取PDF文件内容jar包-->
 		<dependency>
